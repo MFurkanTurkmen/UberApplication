@@ -1,0 +1,16 @@
+server:
+  port: 7070
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5472
+    username: user
+    password: password
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/UberAuthDB
+    username: postgres
+    password: asd123asd
+  jpa:
+    hibernate:
+      ddl-auto: update
