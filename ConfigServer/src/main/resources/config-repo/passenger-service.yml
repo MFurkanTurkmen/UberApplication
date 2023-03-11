@@ -1,0 +1,16 @@
+server:
+  port: 7072
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5500/PassengerDB
+    username: postgres
+    password: asd123asd
+  jpa:
+    hibernate:
+      ddl-auto: update

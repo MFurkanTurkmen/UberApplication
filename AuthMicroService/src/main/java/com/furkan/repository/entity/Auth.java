@@ -24,4 +24,5 @@ public class Auth extends BaseEntity {
     private String surname;
     private String password;
     private String email;
+    private Type type;
 }
