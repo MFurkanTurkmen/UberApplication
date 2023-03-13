@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface IDriverRepository extends JpaRepository<Driver,Long> {
     Optional<Driver> findOptionalByUsername(String username);
+    Optional<Driver> findOptionalByAuthId(Long authid);
 }

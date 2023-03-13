@@ -1,20 +1,20 @@
 package com.furkan.mapper;
 
-import com.furkan.rabbitmq.messagemodel.MessageModelSaveDriver;
+import com.furkan.rabbitmq.messagemodel.ModelSave;
 import com.furkan.repository.entity.Driver;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-03-11T19:57:28+0300",
+    date = "2023-03-13T04:59:26+0300",
     comments = "version: 1.5.3.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.5.1.jar, environment: Java 17.0.5 (Oracle Corporation)"
 )
 @Component
 public class IDriverMapperImpl implements IDriverMapper {
 
     @Override
-    public Driver toDriver(MessageModelSaveDriver model) {
+    public Driver toDriver(ModelSave model) {
         if ( model == null ) {
             return null;
         }

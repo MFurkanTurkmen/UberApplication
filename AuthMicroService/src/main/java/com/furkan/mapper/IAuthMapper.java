@@ -1,5 +1,6 @@
 package com.furkan.mapper;
 
+import com.furkan.dto.request.AuthLoginDto;
 import com.furkan.dto.request.AuthSaveDto;
 import com.furkan.repository.entity.Auth;
 import org.mapstruct.Mapper;
@@ -12,4 +13,5 @@ public interface IAuthMapper {
     IAuthMapper INSTANCE= Mappers.getMapper(IAuthMapper.class);
     Auth toAuth(final AuthSaveDto dto);
     AuthSaveDto toDto(final Auth auth);
+    Auth toAuth(final AuthLoginDto dto);
 }

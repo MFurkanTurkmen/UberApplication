@@ -1,6 +1,9 @@
 package com.furkan.rabbitmq.messagemodel;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -8,8 +11,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
-public class MessageModelSavePassenger implements Serializable {
+public class ModelSave implements Serializable {
     private String username;
     private String name;
     private String surname;

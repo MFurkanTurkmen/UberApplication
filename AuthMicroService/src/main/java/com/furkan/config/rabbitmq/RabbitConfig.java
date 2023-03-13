@@ -1,37 +1,92 @@
 package com.furkan.config.rabbitmq;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
-    private String exchangeDirectAuth = "exchange-direct-auth";
-    private String bindingKeyAuth = "binding-key-auth";
-    private String queueCreateDriver = "queue-create-driver";
+    // exchange
+    private String exchangeDirect = "exchange-direct";
+    private String exchangeFanout = "exchange-fanout";
+    private String exchangeTopic = "exchange-topic";
+
+
+    // Key
+    private String bindingKeyDriver = "binding-key-driver";
+    private String bindingKeyPassenger = "binding-key-passenger";
+
+
+    // Queu
     private String queueCreatePassenger = "queue-create-passenger";
+    private String queueCreateDriver = "queue-create-driver";
+    private String queueFaonutDriver = "queue-fanout-driver";
+    private String queueFaonutPassenger = "queue-fanout-passenger";
 
 
+    /**
+     * ---- Exchange ----
+     */
     @Bean
-    DirectExchange directExchange() {
-        return new DirectExchange(exchangeDirectAuth);
+    DirectExchange exchangeDirect() {
+        return new DirectExchange(exchangeDirect);
     }
 
+    @Bean
+    FanoutExchange exchangeFanout() {
+        return new FanoutExchange(exchangeFanout);
+    }
+
+    @Bean
+    TopicExchange exchangeTopic() {
+        return new TopicExchange(exchangeTopic);
+    }
+
+    /**
+     * ---- Queu ----
+     */
     @Bean
     Queue queueCreateDriver() {
         return new Queue(queueCreateDriver);
     }
 
     @Bean
-    Binding bindingCreateDriver(final Queue queue, final DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(bindingKeyAuth);
+    Queue queueCreatePassenger() {
+        return new Queue(queueCreatePassenger);
     }
 
     @Bean
-    Binding bindingCreatePassenger(final Queue queue, final DirectExchange directExchange) {
-        return BindingBuilder.bind(queue).to(directExchange).with(bindingKeyAuth);
+    Queue queueFanoutPassenger() {
+        return new Queue(queueFaonutPassenger);
     }
+
+    @Bean
+    Queue queueFanoutDriver() {
+        return new Queue(queueFaonutDriver);
+    }
+
+
+    /**
+     * ---- Binding ----
+     */
+    @Bean
+    public Binding bindingCreateDriver(final Queue queueCreateDriver, final DirectExchange directExchange) {
+        return BindingBuilder.bind(queueCreateDriver).to(directExchange).with(bindingKeyDriver);
+    }
+
+    @Bean
+    public Binding bindingCreatePassenger(final Queue queueCreatePassenger, final DirectExchange directExchange) {
+        return BindingBuilder.bind(queueCreatePassenger).to(directExchange).with(bindingKeyPassenger);
+    }
+
+    @Bean
+    public Binding bindingFanoutDriver(final Queue queueFanoutDriver, final FanoutExchange exchangeFanout) {
+        return BindingBuilder.bind(queueFanoutDriver).to(exchangeFanout);
+    }
+
+    @Bean
+    public Binding bindingFanoutPassenger(final Queue queueFanoutPassenger, final FanoutExchange exchangeFanout) {
+        return BindingBuilder.bind(queueFanoutPassenger).to(exchangeFanout);
+    }
+
 }

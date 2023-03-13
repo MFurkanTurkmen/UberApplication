@@ -11,11 +11,6 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MessageModelSavePassenger implements Serializable {
-    private String username;
-    private String name;
-    private String surname;
-    private String email;
-    private Long authId;
-
+public class ModelFanout implements Serializable {
+    String mesaj;
 }

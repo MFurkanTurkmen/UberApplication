@@ -24,5 +24,6 @@ public class Auth extends BaseEntity {
     private String surname;
     private String password;
     private String email;
+    @Enumerated(EnumType.STRING)
     private Type type;
 }
