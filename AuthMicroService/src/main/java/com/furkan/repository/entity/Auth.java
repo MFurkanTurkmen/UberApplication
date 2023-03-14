@@ -1,20 +1,18 @@
 package com.furkan.repository.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
-@Data
 @SuperBuilder
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table
+@AllArgsConstructor
+@Getter
+@Setter
 @ToString
+@Entity
+@Table(name = "tblauth")
 public class Auth extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +24,5 @@ public class Auth extends BaseEntity {
     private String email;
     @Enumerated(EnumType.STRING)
     private Type type;
+    private String tarih;
 }

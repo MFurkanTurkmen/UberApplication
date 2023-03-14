@@ -4,4 +4,5 @@ include 'DriverMicroService'
 include 'PassengerMicroService'
 include 'ConfigServer'
 include 'ApiGateway'
+include 'ConfigServerGit'
 
